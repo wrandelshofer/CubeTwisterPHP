@@ -1,0 +1,894 @@
+/* --- Haupt-CSS --- */
+
+/* --- Webfonts (fuer alle Browser ausser IE) --- */
+@font-face {font-family:"Unit-LightTF"; font-style:normal; font-weight:normal;
+            src:url('../../webfonts/Unit-Light-TF.woff2') format('woff2'),     /* WOFF2: Super Modern Browsers */
+                url('../../webfonts/Unit-Light-TF.woff')  format('woff'),      /* WOFF: Pretty Modern Browsers */
+                url('../../webfonts/Unit-Light-TF.ttf')   format('truetype');} /* TTF: Safari, Android, iOS */
+
+@font-face {font-family:"Unit-BoldTF"; font-style:normal; font-weight:normal;
+            src:url('../../webfonts/Unit-Bold-TF.woff2') format('woff2'),     /* WOFF2: Super Modern Browsers */
+                url('../../webfonts/Unit-Bold-TF.woff')  format('woff'),      /* WOFF: Pretty Modern Browsers */
+                url('../../webfonts/Unit-Bold-TF.ttf')   format('truetype');} /* TTF: Safari, Android, iOS */
+
+
+/* --- Import-Reihenfolge --- */
+/*
+@import 'breakpoints.scss';
+@import 'colors.scss';
+@import 'fonts.scss';
+@import 'mixins/*';
+@import 'globals/*';
+@import 'includes/*';
+@import 'navigations/*';
+@import 'page.scss';
+@import 'html.scss';
+@import 'items/*';
+@import 'objects/*';
+@import 'lists/*';
+@import 'decorators/*';
+@import 'additional.scss';
+*/
+
+
+
+
+
+
+/* *** breakpoints.scss BEGIN ******************************************************************************************************************************************* */
+
+/* --- Breakpoints --- */ 
+
+/*
+*  480px     = Breakpoint XS min
+*  544px     = Breakpoint S min
+*  768px     = Breakpoint M min
+*  992px     = Breakpoint L min
+* 1200px     = Breakpoint XL min
+* 1500px     = Breakpoint XXL min
+* 1600px     = Breakpoint XXXL min
+* 
+*  480px - 1 = Breakpoint XS max
+*  544px - 1 = Breakpoint S max
+*  768px - 1 = Breakpoint M max
+*  992px - 1 = Breakpoint L max
+* 1200px - 1 = Breakpoint XL max
+* 1500px - 1 = Breakpoint XXL max
+* 1600px - 1 = Breakpoint XXXL max
+* 
+* 1600px     = Breakpoint Maximal
+* 
+* Simulationsraster:
+* $breakpoints: (xs_min: 480px, s_min: 544px, m_min: 768px, l_min: 992px, xl_min: 1200px);
+* 
+* Raster (Raster, falls noch keine berechneten Bildgroessen vorliegen):
+* $imageRaster: 1600, 1280, 640, 480, 320, 160;
+*/
+
+
+/* --- Viewport Varianten, um Ereignisse in der design.js zu feuern --- */
+
+/*@wCssFragment{class:hideIfViewport;variant:xl_min;caption:wenn die Fensterbreite groesser gleich #{$viewport_xl_min} ist;caption-en:if window width is equal or larger than #{$viewport_xl_min}} */
+@media only screen and (min-width:1200px)  {.hideIfViewport_xl_min {display:none;} }
+
+/*@wCssFragment{class:hideIfViewport;variant:xl_max;caption:wenn die Fensterbreite kleiner #{$viewport_xl_min} ist;caption-en:if window width is less #{$viewport_xl_max}} */
+@media only screen and (max-width: 1199px) {.hideIfViewport_xl_max {display:none;} }
+
+
+/*@wCssFragment{class:hideIfViewport;variant:l_min;caption:wenn die Fensterbreite groesser gleich #{$viewport_l_min} ist;caption-en:if window width is equal or larger than #{$viewport_l_min}} */
+@media only screen and (min-width: 992px)  {.hideIfViewport_l_min {display:none;} }
+
+/*@wCssFragment{class:hideIfViewport;variant:l_max;caption:wenn die Fensterbreite kleiner #{$viewport_l_min} ist;caption-en:if window width is less #{$viewport_l_max}} */
+@media only screen and (max-width: 991px)  {.hideIfViewport_l_max {display:none;} }
+
+
+/*@wCssFragment{class:hideIfViewport;variant:m_min;caption:wenn die Fensterbreite groesser gleich #{$viewport_m_min} ist;caption-en:if window width is equal or larger than #{$viewport_m_min}} */
+@media only screen and (min-width: 768px)  {.hideIfViewport_m_min {display:none;} }
+
+/*@wCssFragment{class:hideIfViewport;variant:m_max;caption:wenn die Fensterbreite kleiner #{$viewport_m_min} ist;caption-en:if window width is less #{$viewport_m_max}} */
+@media only screen and (max-width: 767px)  {.hideIfViewport_m_max {display:none;} }
+
+
+/*@wCssFragment{class:hideIfViewport;variant:s_min;caption:wenn die Fensterbreite groesser gleich #{$viewport_s_min} ist;caption-en:if window width is equal or larger than #{$viewport_s_min}} */
+@media only screen and (min-width: 544px)  {.hideIfViewport_s_min {display:none;} }
+
+/*@wCssFragment{class:hideIfViewport;variant:s_max;caption:wenn die Fensterbreite kleiner #{$viewport_s_min} ist;caption-en:if window width is less #{$viewport_s_max}} */
+@media only screen and (max-width: 543px)  {.hideIfViewport_s_max {display:none;} }
+
+
+/*@wCssFragment{class:hideIfViewport;variant:xs_min;caption:wenn die Fensterbreite groesser gleich #{$viewport_xs_min} ist;caption-en:if window width is equal or larger than #{$viewport_xs_min}} */
+@media only screen and (min-width: 480px)  {.hideIfViewport_xs_min {display:none;} }
+
+/*@wCssFragment{class:hideIfViewport;variant:xs_max;caption:wenn die Fensterbreite kleiner #{$viewport_xs_min} ist;caption-en:if window width is less #{$viewport_xs_max}} */
+@media only screen and (max-width: 479px)  {.hideIfViewport_xs_max {display:none;} }
+
+/* *** breakpoints.scss END ******************************************************************************************************************************************* */
+
+
+
+
+
+
+/* *** page.scss BEGIN ******************************************************************************************************************************************* */
+
+/* --- Seiten-Layout --- */
+
+
+/* --- Seitenstruktur --- */
+#blockPage            {}
+#blockPageInner       {margin:0 10px 0 10px;}
+
+#blockBody            {}
+
+#blockBodyBefore      {}
+#blockBodyBeforeInner {}
+
+#blockBodyInner       {}
+#blockMain            {}
+#blockMainInner       {}
+#blockContent         {}
+#blockContentInner    {}
+
+#blockCGIForm         {}
+
+#blockAfter           {}
+#blockAfterInner      {}
+
+/* --- Breiten --- */
+
+
+/* --- Standarddarstellungen --- */
+
+
+/* --- Kopfbereich --- */
+
+
+/* --- Hoehen --- */
+
+
+/* --- Logo --- */
+
+
+/* --- Volltextsuche --- */
+
+
+/* --- Sprachwahl --- */
+
+
+/* --- Metanavigation --- */
+
+
+/* --- Hauptnavigation --- */
+
+
+/* --- Brotkruemelnavigation --- */
+
+
+/* --- Unternavigation --- */
+
+
+/* --- Inhaltsbereich --- */
+
+
+/* --- Standardabstaende --- */
+
+
+/* --- Spaltenabstaende --- */
+
+
+/* --- Navigationshilfe --- */
+
+
+/* --- Seitenhintergrund --- */
+
+
+html {overflow-y:scroll; -webkit-text-size-adjust:100%; font-size:16px;}
+body {margin:0; padding:0; font-family:Unit-LightTF, Helvetica, Arial, sans-serif; font-size:1.2rem; line-height:150%; color:#1d1d1b; background:#FFFFFF; -webkit-tap-highlight-color:transparent;}
+
+/* --- Breakpoint S bis ... --- */
+@media only screen and (min-width:544px){
+  html {font-size:17px;}
+  body {font-size:1.3rem; line-height:150%;}
+}
+
+/* --- Grundgeruest GET Warenkorb, Infokorb, Bücherkorb --- */
+
+
+/* *** page.scss END ******************************************************************************************************************************************* */
+
+
+
+
+
+
+/* *** html.scss BEGIN ******************************************************************************************************************************************* */
+
+/* --- Allgemein --- */
+
+
+/* --- Textformatierung --- */
+.subline   {color:#8E8E8D;} /* 100% = #1d1d1b; 50% = #8E8E8D. */
+.subline a {background:none; color:inherit;}
+
+.description       {font-weight:bold;}
+.unimportant       {color:#777776;} /* 100% = #1d1d1b; 40% = #777776. */
+.info, .additional {color:#8E8E8D;} /* 100% = #1d1d1b; 50% = #8E8E8D. */
+.noDecoration      {text-decoration:none;}
+.positionRelative  {position:relative;}
+
+.clearAfter:after {display:table; overflow:hidden; visibility:hidden; clear:both; content:"."; height:0; font-size:0; line-height:0;}
+.clearBoth        {height:0px;  line-height:0; font-size:0px; clear:both; padding:0; margin:0; overflow:hidden;}
+.clearBothSpace   {height:10px; line-height:0; font-size:0px; clear:both; padding:0; margin:0; overflow:hidden;}
+
+.clickable   {cursor:pointer;}
+.invisible   {display:none;}
+.hideIfEmpty {}
+.highlighted {background-color:#FFF69D;}
+.soft        {color:#777776;} /* 100% = #1d1d1b; 40% = #777776. */
+.preWrap     {white-space:pre-wrap;}
+
+picture {}
+
+html {box-sizing:border-box;} /* box-sizing:border-box; */
+
+*, 
+*:before, 
+*:after {box-sizing:inherit; margin:0; padding:0;} /* box-sizing:inherit; */
+
+img {}
+
+p {margin:0 0 1rem 0;}
+
+.alignLeft    {text-align:left;}
+.alignRight   {text-align:right;}
+.alignCenter  {text-align:center;}
+.alignJustify {text-align:justify;}
+
+ul     {margin:0; padding:0; list-style:none;}
+ol, ul {margin:0; padding:0;}
+li     {margin:0; padding:0;}
+
+hr {margin:0 0 10px 0; border-color:#DDDDDD; border-style:solid none none none; height:0px;}
+
+acronym, abbr {border-bottom:dashed 1px #DDDDDD;}
+blockquote    {border-left:solid 4px #DDDDDD; padding-left:1rem;}
+sup           {font-size:70%; line-height:0; vertical-align:super;}
+
+
+/* --- Links --- */
+a {text-decoration:underline; color:#1d1d1b;
+   > span {color:inherit !important;}
+  }
+
+#blockLeft a, 
+#blockRight a, 
+#blockFooter a {}
+
+a.downloadIcon > span, 
+a.iconUrl > span, 
+a.intern:before, a.extern:before, 
+a.box:before, a.boxPicture:before, 
+a.download:before, 
+a.file:before, a.pdf:before, a.doc:before, a.xls:before, 
+a.audio:before, a.video:before, 
+a.next:before, a.back:before, a.up:before, a.down:before, 
+a.mail:before, 
+span.phone:before, a.phone:before, 
+span.fax:before, a.fax:before, 
+span.mobile:before, a.mobile:before, 
+a.vcf:before, a.ical:before, 
+a.cart:before, a.infocart:before, a.book:before {content:''; display:inline-block; outline:none; margin:4px 5px 0 0; width:16px; height:16px; vertical-align:top; background-position:0 0; background-repeat:no-repeat; flex:none;}
+
+a.intern, a.extern, 
+a.box, a.boxPicture, 
+a.download, 
+a.file, a.pdf, a.doc, a.xls, 
+a.audio, a.video, 
+a.next, a.back, a.up, a.down, 
+a.mail, 
+span.phone, a.phone, 
+span.fax, a.fax, 
+span.mobile, a.mobile, 
+a.vcf, a.ical,
+a.cart, a.infocart, a.book {> span {display:inline-block; text-decoration:inherit; color:inherit; font:inherit; max-width:calc(100% - 20px);} }
+
+
+a.intern:before       {background-image:url("../../images/links/intern.svg");}
+a.extern:before       {background-image:url("../../images/links/extern.svg");}
+a.box:before          {background-image:url("../../images/links/box.svg");}
+a.boxPicture:before   {background-image:url("../../images/links/box.svg");}
+a.download:before     {background-image:url("../../images/links/download.svg");}
+a.cart:before         {background-image:url("../../images/links/cart.svg");}
+a.infocart:before     {background-image:url("../../images/links/infocart.svg");}
+a.book:before         {background-image:url("../../images/links/book.svg");}
+a.file:before         {background-image:url("../../images/links/file.svg");}
+a.pdf:before          {background-image:url("../../images/links/pdf.svg");}
+a.doc:before          {background-image:url("../../images/links/doc.svg");}
+a.xls:before          {background-image:url("../../images/links/xls.svg");}
+a.audio:before        {background-image:url("../../images/links/audio.svg");}
+a.video:before        {background-image:url("../../images/links/video.svg");}
+a.next:before         {background-image:url("../../images/links/next.svg");}
+a.back:before         {background-image:url("../../images/links/back.svg");}
+a.up:before           {background-image:url("../../images/links/up.svg");}
+a.down:before         {background-image:url("../../images/links/down.svg");}
+a.mail:before         {background-image:url("../../images/links/mail.svg");}
+span.phone:before,
+a.phone:before        {background-image:url("../../images/links/phone.svg");}
+span.fax:before,
+a.fax:before          {background-image:url("../../images/links/fax.svg");}
+span.mobile:before,
+a.mobile:before       {background-image:url("../../images/links/mobile.svg");}
+a.vcf:before          {background-image:url("../../images/links/vcf.svg");}
+a.ical:before         {background-image:url("../../images/links/ical.svg");}
+
+
+a.downloadIcon        {background-image:none !important;}
+
+a.downloadIcon:before {display:none;}
+
+a.phone[href=''], 
+a.phone:not([href]), 
+a.fax[href=''], 
+a.fax:not([href]), 
+a.mobile[href=''], 
+a.mobile:not([href])  {pointer-events:none; cursor:text; text-decoration:none; color:#1d1d1b;}
+
+a:hover               {text-decoration:none; color:#1d1d1b;}
+
+a.wpst                {@extend a.mail;}
+
+
+/* --- Schaltflaechen --- */
+.linkButton                                {display:inline-block; text-decoration:none; border:solid 1px #1d1d1b; margin:0 0.3rem 1% 0; border-radius:5px; padding:3px 12px;
+                                            color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+.linkButton:before                         {transform:scale(1.2); margin-right:8px;}
+.linkButton:hover                          {color:#FFFFFF; background-color:#343432;     border-color:#343432;} /* 100% = #1d1d1b; 90% = #343432. 80% = #4A4A49. (rot: #FB0008#) */
+.linkButton:active                         {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+
+a.linkButton.cart:before                   {background-image:url("../../images/links/optimized/cart@stroke(FFFFFF).svg");}
+a.linkButton:hover.cart:before             {background-image:url("../../images/links/optimized/cart@stroke(FFFFFF).svg");}
+a.linkButton:active.cart:before            {background-image:url("../../images/links/optimized/cart@stroke(FFFFFF).svg");}
+
+a.linkButton.infocart:before               {background-image:url("../../images/links/optimized/infocart@stroke(FFFFFF).svg");}
+a.linkButton:hover.infocart:before         {background-image:url("../../images/links/optimized/infocart@stroke(FFFFFF).svg");}
+a.linkButton:active.infocart:before        {background-image:url("../../images/links/optimized/infocart@stroke(FFFFFF).svg");}
+
+a.linkButton.book:before                   {background-image:url("../../images/links/optimized/book@stroke(FFFFFF).svg");}
+a.linkButton:hover.book:before             {background-image:url("../../images/links/optimized/book@stroke(FFFFFF).svg");}
+a.linkButton:active.book:before            {background-image:url("../../images/links/optimized/book@stroke(FFFFFF).svg");}
+
+
+.linkButtonWhite                           {display:inline-block; text-decoration:none; border:solid 1px #FFFFFF; margin:0 0.3rem 1% 0; border-radius:5px; padding:3px 12px;
+                                            color:#1d1d1b; background-color:#FFFFFF;     border-color:#1d1d1b;}
+.linkButtonWhite:before                    {transform:scale(1.2); margin-right:8px;}
+.linkButtonWhite:hover                     {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+.linkButtonWhite:active                    {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+
+a.linkButtonWhite:hover.cart:before        {background-image:url("../../images/links/optimized/cart@stroke(FFFFFF).svg");}
+
+a.linkButtonWhite:hover.infocart:before    {background-image:url("../../images/links/optimized/infocart@stroke(FFFFFF).svg");}
+
+a.linkButtonWhite:hover.book:before        {background-image:url("../../images/links/optimized/book@stroke(FFFFFF).svg");}
+
+
+.linkButtonNeutral                         {display:inline-block; text-decoration:none; border:solid 1px #1d1d1b; margin:0 0.3rem 1% 0; border-radius:5px; padding:3px 12px;
+                                            color:#1d1d1b; background-color:transparent; border-color:#1d1d1b;}
+.linkButtonNeutral:before                  {transform:scale(1.2); margin-right:8px;}
+.linkButtonNeutral:hover                   {color:#4A4A49; background-color:transparent; border-color:#4A4A49;} /* 100% = #1d1d1b; 90% = #343432. 80% = #4A4A49. (rot: #FB0008#) */
+.linkButtonNeutral:active, 
+.linkButtonNeutral.selected                {color:#1d1d1b; background-color:transparent; border-color:#1d1d1b;}
+
+a.linkButtonNeutral.cart:before            {}
+a.linkButtonNeutral:hover.cart:before      {background-image:url("../../images/links/optimized/cart@stroke(4A4A49).svg");}
+a.linkButtonNeutral:active.cart:before     {background-image:url("../../images/links/optimized/cart@stroke(1d1d1b).svg");}
+
+a.linkButtonNeutral.infocart:before        {}
+a.linkButtonNeutral:hover.infocart:before  {background-image:url("../../images/links/optimized/infocart@stroke(4A4A49).svg");}
+a.linkButtonNeutral:active.infocart:before {background-image:url("../../images/links/optimized/infocart@stroke(1d1d1b).svg");}
+
+a.linkButtonNeutral.book:before            {}
+a.linkButtonNeutral:hover.book:before      {background-image:url("../../images/links/optimized/book@stroke(4A4A49).svg");}
+a.linkButtonNeutral:active.book:before     {background-image:url("../../images/links/optimized/book@stroke(1d1d1b).svg");}
+
+
+.linkButtonGhost            {}
+.linkButtonGhostWhite       {}
+.linkButtonImportant        {}
+
+
+/* --- Tabellen --- */
+table         {font:inherit; color:inherit; border:none;}
+th, td        {vertical-align:top;}
+table.light {}  
+table.default {}
+tr.highlighted, 
+th.highlighted, 
+td.highlighted {}
+td.bgColor1, 
+th.bgColor1 {}
+
+
+/* --- Formularelement --- */
+form        {}
+form.hidden {display:none;}
+
+input    {font:inherit; line-height:2rem; height:2rem; padding:0 0.5rem; margin:0; border:1px solid #8E8E8D; background-color:#FFFFFF;}
+select   {font:inherit;                                padding:0;        margin:0; border:1px solid #8E8E8D; background-color:#FFFFFF;}
+textarea {font:inherit;                                padding:0;        margin:0; border:1px solid #8E8E8D;}
+section  {}
+
+input::-webkit-input-placeholder    {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Webkit browsers */
+input:-moz-placeholder              {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Mozilla Firefox 4 to 18 */
+input::-moz-placeholder             {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Mozilla Firefox 19+ */
+input:-ms-input-placeholder         {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Internet Explorer 10+ */
+
+textarea::-webkit-input-placeholder {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Webkit browsers */
+textarea:-moz-placeholder           {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Mozilla Firefox 4 to 18 */
+textarea::-moz-placeholder          {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Mozilla Firefox 19+ */
+textarea:-ms-input-placeholder      {font:inherit; line-height:2rem; height:2rem; text-align:left; text-indent:0; color:#8E8E8D;} /* Internet Explorer 10+ */
+
+
+input[type="radio"]    {border:none; background-color:transparent; height:auto; margin-right:0;}
+input[type="checkbox"] {border:none; background-color:transparent; height:auto; margin-right:6px;}
+input[type="file"]     {padding:0 !important; border:none;}
+
+input.wglDatepicker {}
+
+input:focus, 
+select:focus, 
+textarea:focus {outline:none; border:solid 1px solid #8E8E8D;}
+
+button                      {cursor:pointer; font:inherit; font-weight:normal; border:solid 1px #1d1d1b; margin:0 0.3rem 0 0; border-radius:5px; height:2.6rem; padding:0 1rem;
+                             color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+button:hover                {color:#FFFFFF; background-color:#343432;     border-color:#343432;} /* 100% = #1d1d1b; 90% = #343432. 80% = #4A4A49. (rot: #FB0008#) */
+button:active               {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+
+button.buttonReset          {color:#1d1d1b; background-color:transparent;}
+button.buttonReset:hover    {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+button.buttonReset:active   {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+
+button.buttonNeutral        {color:#1d1d1b; background-color:transparent;}
+button.buttonNeutral:hover  {color:#4A4A49; background-color:transparent; border-color:#4A4A49;} /* 100% = #1d1d1b; 90% = #343432. 80% = #4A4A49. (rot: #FB0008#) */
+button.buttonNeutral:active {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+
+button.buttonIconNeutral          {color:#1d1d1b; background-color:transparent; font-size:1rem; line-height:130%; padding:0.3rem 0.5rem 0 0.5rem !important;}
+button.buttonIconNeutral:hover    {color:#4A4A49; background-color:transparent; border-color:#4A4A49;} /* 100% = #1d1d1b; 90% = #343432. 80% = #4A4A49. (rot: #FB0008#) */
+button.buttonIconNeutral:active   {color:#FFFFFF; background-color:#1d1d1b;     border-color:#1d1d1b;}
+button.buttonIconNeutral svg path {fill:currentcolor;}                                                 /* Aktuelle Farbe als Füllfarbe für SVG-Pfad übernehmen */
+
+
+/* input[type="text"] + button {margin-left:0.5rem;} */
+input[type="text"] {}
+
+.wglFormElement {}
+.wglButton      {}
+
+label.wglIsInvalid    {background-color:#FFFFFF; color:#FB0008;}
+label.wglIsValid      {background-color:#FFFFFF; color:#22AE38;}
+label.wglIsNeutral    {background-color:#FFFFFF; color:#1d1d1b;}
+
+input.wglIsInvalid    {background-color:#FFFFFF; border:1px solid #FB0008;}
+input.wglIsValid      {background-color:#FFFFFF; border:1px solid #22AE38;}
+
+select.wglIsInvalid   {background-color:#FEFEFE; border:1px solid #FB0008;}
+select.wglIsValid     {background-color:#FEFEFE; border:1px solid #22AE38;}
+select.wglIsNeutral   {background-color:#FEFEFE;}                           /* 100% = #FFFFFF;       #FEFEFE. (Element SELECT benoetigt im Minimum einen leichten Grauton!) */
+
+textarea.wglIsInvalid {background-color:#FFFFFF; border:1px solid #FB0008;}
+textarea.wglIsValid   {background-color:#FFFFFF; border:1px solid #22AE38;}
+
+section.wglIsInvalid  {background-color:#FFFFFF; border:1px solid #FB0008;} /* 100% = #FB0008; 20% = #FECCCE. */
+section.wglIsValid    {background-color:#FFFFFF; border:1px solid #22AE38;} /* 100% = #22AE38; 20% = #D3EFD7. */
+section.wglIsNeutral  {background-color:#FFFFFF; border:1px solid #DDDDDD;} /* 100% = #FFFFFF; 20% = #FFFFFF. */
+
+.wglIsInvalid         {background-color:#FECCCE;} /* 100% = #FB0008; 20% = #FECCCE. */
+.wglIsValid           {background-color:#D3EFD7;} /* 100% = #22AE38; 20% = #D3EFD7. */
+.wglIsNeutral         {background-color:#FFFFFF;} /* 100% = #FFFFFF; 20% = #FFFFFF. */
+
+.wglInfoAlreadyUploaded         {}
+.wglInfoAlreadyUploadedText     {}
+.wglInfoAlreadyUploadedFilename {}
+
+.wglCaptcha {}
+.wglCaptchaArithmeticQuestion {}
+
+.wglRadioWrapper                {margin:0;          padding:0;            clear:both;}
+.wgRadioWrapperFloat            {margin-right:10px; padding:0;            float:left;}
+
+.wglRadio                       {margin:0;          padding:0 10px 0 5px; float:left; display:block; overflow:hidden;}
+.wglRadio input                 {margin-right:10px; padding:0;            background-color:transparent;}
+.wglRadio input[type="text"]    {margin-left:4px;   padding:0;}
+.wglRadio label                 {margin:0;          padding:0 !important;}
+
+.wglCheckboxWrapper             {margin:0;          padding:0;            clear:both;}
+.wglCheckboxWrapperFloat        {margin-right:10px; padding:0;            float:left;}
+
+.wglCheckbox                    {margin:0;          padding:0;            float:left; display:block; overflow:hidden;}
+.wglCheckbox input              {margin-right:4px;                        background-color:transparent;}
+.wglCheckbox input[type="text"] {margin-left:4px;}
+.wglCheckbox label              {margin:0;          padding:0 !important;}
+
+.wglInputTimeAfterDate {}
+
+.wglUploaderForm {}
+
+.infoFormDateTime {}
+
+
+label                                                                                            {display:block; float:left;}
+section.XS, section.XM, section.S, section.M, section.L, section.XL, section.XXL                 {display:block; float:left; padding-left:10px;}
+
+label.XS                                                                                         {width:14%;  margin-left:1%;}
+label.XS:first-child                                                                             {width:15%;  margin-left:0;}
+input.XS,              textarea.XS,              select.XS,              section.XS              {width:14%;  margin-left:1%;}
+input.XS:first-child,  textarea.XS:first-child,  select.XS:first-child,  section.XS.firstChild   {width:15%;  margin-left:0;}
+
+label.XM                                                                                         {width:18%;  margin-left:1%;}
+label.XM:first-child                                                                             {width:19%;  margin-left:0;}
+input.XM,              textarea.XM,              select.XM,              section.XM              {width:18%;  margin-left:1%;}
+input.XM:first-child,  textarea.XM:first-child,  select.XM:first-child,  section.XM.firstChild   {width:19%;  margin-left:0;}
+
+label.S                                                                                          {width:29%;  margin-left:1%;}
+label.S:first-child                                                                              {width:30%;  margin-left:0;}
+input.S,               textarea.S,               select.S,               section.S               {width:29%;  margin-left:1%;}
+input.S:first-child,   textarea.S:first-child,   select.S:first-child,   section.S.firstChild    {width:30%;  margin-left:0;}
+
+label.M                                                                                          {width:49%;  margin-left:1%;}
+label.M:first-child                                                                              {width:50%;  margin-left:0;}
+input.M,               textarea.M,               select.M,               section.M               {width:49%;  margin-left:1%;}
+input.M:first-child,   textarea.M:first-child,   select.M:first-child,   section.M.firstChild    {width:50%;  margin-left:0;}
+
+label.L                                                                                          {width:69%;  margin-left:1%;}
+label.L:first-child                                                                              {width:70%;  margin-left:0;}
+input.L,               textarea.L,               select.L,               section.L               {width:69%;  margin-left:1%;}
+input.L:first-child,   textarea.L:first-child,   select.L:first-child,   section.L.firstChild    {width:70%;  margin-left:0;}
+
+label.XL                                                                                         {width:84%;  margin-left:1%;}
+label.XL:first-child                                                                             {width:85%;  margin-left:0;}
+input.XL,              textarea.XL,              select.XL,              section.XL              {width:84%;  margin-left:1%;}
+input.XL:first-child,  textarea.XL:first-child,  select.XL:first-child,  section.XL.firstChild   {width:85%;  margin-left:0;}
+
+label.XXL                                                                                        {width:99%;  margin-left:1%;}
+label.XXL:first-child                                                                            {width:100%; margin-left:0;}
+input.XXL,             textarea.XXL,             select.XXL,             section.XXL             {width:99%;  margin-left:1%;}
+input.XXL:first-child, textarea.XXL:first-child, select.XXL:first-child, section.XXL.firstChild  {width:100%; margin-left:0;}
+
+
+.wglFormStatusSubmited button {}
+
+.requiredFormfield {display:none !important;}
+
+.wglLightbox {}
+
+.pictureZoomer {}
+
+.wglContainerInsideTopOnScroll {}
+
+.wglMaximizer {}
+
+.errorMessages {}
+.wglErrorMessage {}
+
+.textInfo {}
+
+.tagCloud {}
+
+#fontResizer {}
+
+.fontResizerShrink {}
+
+.fontResizerEnlarge {}
+
+
+/* --- Lupenfunktion, wie sie z.B. im Shop genutzt wird ---*/
+.wMagnifier {}
+
+/* *** html.scss END ******************************************************************************************************************************************* */
+
+
+
+
+
+/* Bilder */
+img.picture            {max-width:100%; height:auto; margin:0 1rem 1rem 0; padding:0;}
+img.pictureLeft        {float:left; margin:0 1rem 0.5rem 0; padding:0;}
+img.pictureRight       {float:right margin:0 0 0.5rem 1rem; padding:0;}
+img.pictureWithBorder  {border:1px solid #DDDDDD;}
+img.pictureWithShadow  {box-shadow:10px 10px 11px -1px #BCBCBC; -webkit-box-shadow:10px 10px 11px -1px #BCBCBC; -moz-box-shadow:10px 10px 11px -1px #BCBCBC;}
+
+
+/* Bildelement */
+
+
+/* --- */
+.elementClearer                 {margin:0; height:0px; clear:both;}
+
+.elementSpace                   {margin:0; height:1rem;}
+
+.elementClearerWithSpace        {margin:0; height:1rem; clear:both}
+  .spacer1                        {height:1rem;}
+  .spacer2                        {height:2rem;}
+  .spacer3                        {height:3rem;}
+  .spacer4                        {height:4rem;}
+  .spacer5                        {height:5rem;}
+  .spacer6                        {height:6rem;}
+  .spacer7                        {height:7rem;}
+  .spacer8                        {height:8rem;}
+
+
+
+
+
+/* --- Spalten --- */
+
+
+
+
+
+
+/* *** items > elementHeadline.scss BEGIN ******************************************************************************************************************************************* */
+
+/* --- Ueberschriften --- */
+
+/* --- Ueberschriften: Mobile Ansicht --- */
+h1, div.h1 {font-size:2.4rem; font-family:inherit; line-height:110%; font-weight:normal; color:#1d1d1b; margin:0; padding:2.25rem 0 1.2rem 0;}
+h2, div.h2 {font-size:1.8rem; font-family:inherit; line-height:120%; font-weight:normal; color:#1d1d1b; margin:0; padding:1.6rem  0 1rem   0;}
+h3, div.h3 {font-size:1.4rem; font-family:inherit; line-height:130%; font-weight:normal; color:#1d1d1b; margin:0; padding:1rem    0 0.8rem 0;}
+h4, div.h4 {font-size:1.2rem; font-family:inherit; line-height:130%; font-weight:bold;   color:#1d1d1b; margin:0; padding:0.8rem  0 0.6rem 0;}
+h5, div.h5 {font-size:1rem;   font-family:inherit; line-height:130%; font-weight:bold;   color:#1d1d1b; margin:0; padding:0.7rem  0 0.6rem 0;}
+h6, div.h5 {font-size:1rem;   font-family:inherit; line-height:130%; font-weight:bold;   color:#1d1d1b; margin:0; padding:0.6rem  0 0.6rem 0;}
+
+/* --- Ueberschriften: Breakpoint M bis XXXL --- */
+@media only screen and (min-width:768px){
+  h1, div.h1 {font-size:2.8rem; font-family:inherit; line-height:110%; font-weight:normal; color:#1d1d1b; margin:0; padding:2.25rem 0 1.2rem 0;}
+  h2, div.h2 {font-size:2.4rem; font-family:inherit; line-height:120%; font-weight:normal; color:#1d1d1b; margin:0; padding:1.6rem  0 1rem   0;}
+  h3, div.h3 {font-size:1.8rem; font-family:inherit; line-height:120%; font-weight:normal; color:#1d1d1b; margin:0; padding:1.0rem  0 0.8rem 0;}
+  h4, div.h4 {font-size:1.4rem; font-family:inherit; line-height:130%; font-weight:bold;   color:#1d1d1b; margin:0; padding:0.8rem  0 0.6rem 0;}
+  h5, div.h5 {font-size:1rem;   font-family:inherit; line-height:130%; font-weight:bold;   color:#1d1d1b; margin:0; padding:0.7rem  0 0.6rem 0;}
+  h6, div.h6 {font-size:1rem;   font-family:inherit; line-height:130%; font-weight:bold;   color:#1d1d1b; margin:0; padding:0.6rem  0 0.6rem 0;}
+}
+
+
+.elementHeadline                 {}
+.elementHeadline .elementContent {position:static; margin:0 auto; font-weight:normal;}
+  
+.elementHeadline .weditor        {position:relative;}
+
+.elementHeadline .no-weditor, 
+.elementHeadline:last-child      {padding-bottom:0;}
+
+.elementHeadline:first-child     {padding-top:0;}
+.elementHeadline .elementText    {margin-top:0;}
+
+.elementHeadline p               {margin:0;}
+
+.elementHeadline .weditor, 
+.elementHeadline .wEditorWysiwyg {word-wrap:normal !important;} /* Damit im Editor nicht automatisch umgebrochen wird */
+
+
+
+/*@wCssFragment{class:elementHeadline;variant:0;caption:Standard√ºberschrift;caption-en:Default;livepreview:yes}*/
+.elementHeadline_var0 {margin-left:auto; margin-right:auto;}
+
+/*@wCssFragment{class:elementHeadlineAlign;variant:0;caption:Links;caption-en:Left;livepreview:yes}*/
+.elementHeadlineAlign_var0 {text-align:left;}
+
+/*@wCssFragment{class:elementHeadlineAlign;variant:10;caption:Mittig;caption-en:Center;livepreview:yes}*/
+.elementHeadlineAlign_var10 {text-align:center;}
+
+/*@wCssFragment{class:elementHeadlineAlign;variant:20;caption:Rechts;caption-en:Right;livepreview:yes}*/
+.elementHeadlineAlign_var20 {text-align:right;}
+
+
+/*@wCssFragment{class:elementHeadlineLevel;variant:auto;caption:Automatisch;caption-en:Auto;livepreview:no}*/
+.elementHeadlineLevel_varauto {}
+
+/*@wCssFragment{class:elementHeadlineLevel;variant:h1;caption:√úberschrift 1;caption-en:Headline 1;livepreview:no}*/
+.elementHeadlineLevel_varh1 {}
+
+/*@wCssFragment{class:elementHeadlineLevel;variant:h2;caption:√úberschrift 2;caption-en:Headline 2;livepreview:no}*/
+.elementHeadlineLevel_varh2 {}
+
+/*@wCssFragment{class:elementHeadlineLevel;variant:h3;caption:√úberschrift 3;caption-en:Headline 3;livepreview:no}*/
+.elementHeadlineLevel_varh3 {}
+
+/*@wCssFragment{class:elementHeadlineLevel;variant:h4;caption:√úberschrift 4;caption-en:Headline 4;livepreview:no}*/
+.elementHeadlineLevel_varh4 {}
+
+/* *** items > elementHeadline.scss END ******************************************************************************************************************************************* */
+
+
+
+
+
+
+/* *** items > elementPicture.scss BEGIN ******************************************************************************************************************************************* */
+
+/* *** items > elementPicture.scss END ******************************************************************************************************************************************* */
+
+
+
+
+
+
+/* *** items > elementForm.scss BEGIN ******************************************************************************************************************************************* */
+
+/* --- Formulare --- */
+
+.elementForm {}
+
+.elementForm .requiredFormfield {display:none !important;}
+.elementForm .formLabelStar     {color:#8E8E8D; padding-left:2px;} /* 100% = #1d1d1b; 50% = #8E8E8D. */
+  
+.elementForm dl.form, 
+.elementForm div.form {margin:0; padding:0; width:100%;}
+
+.elementForm label {display:inline-block; line-height:1.82rem; padding-top:0.39rem !important; padding-bottom:0.39rem !important; margin-top:0.3rem; margin-bottom:-0.1rem;}
+
+.elementForm .wglCheckboxFloat label, 
+.elementForm .wglCheckbox label, 
+.elementForm .wglRadioFloat label, 
+.elementForm .wglRadio label          {margin:0;}
+
+.elementForm input,
+.elementForm select:not([multiple^="multiple"]) {height:3rem;} /* height:2.6rem; */
+
+.elementForm input                       {line-height:2.6rem; padding:0 0.5rem 0 0.5rem;}
+.elementForm input[type='text']          {border-radius:0;
+                                          /* appearance:none; */
+                                          /* -webkit-appearance:none; -moz-appearance:none; -ms-appearance:none; */
+                                          }
+
+.elementForm select                      {line-height:2.6rem; padding:0 1.1rem 0 0.3rem; 
+                                          /* border-radius:0; background-image:url("../../images/icons/select-opener.svg"); background-repeat:no-repeat; background-position:right center; appearance:none; */
+                                          /* -webkit-appearance:none; -moz-appearance:none; -ms-appearance:none; */
+                                          }
+.elementForm select:-moz-focusring       {color:transparent; text-shadow:0 0 0 #000;}
+.elementForm select::-ms-expand          {display:none;}
+
+.elementForm select[multiple='multiple'] {padding:0.3rem; background-image:none;}
+
+.elementForm input[type='radio']         {width:auto;}
+
+.elementForm input[type='checkbox']      {width:auto;}
+
+.elementForm input[type=file]            {}
+
+.elementForm textarea                    {padding:0.3rem 0.5rem; border-radius:0; 
+                                          /* appearance:none; */
+                                          /* -webkit-appearance:none; -moz-appearance:none; -ms-appearance:none; */
+                                          }
+
+
+/* Formulare: Einstellungen für alle ausser iOS Geräte */
+@supports not (-webkit-overflow-scrolling:touch) {
+  .elementForm .wglCheckboxWrapper      label                  {padding-left:1em; display:block;} /* Verhindert Umbruch bzw. vertikale Verschiebung von LABEL und CHECKBOX bei mehreren Zeilen */
+  .elementForm .wglCheckboxWrapperFloat label                  {padding-left:1em; display:block;} /* Verhindert Umbruch bzw. vertikale Verschiebung von LABEL und CHECKBOX bei mehreren Zeilen */
+  .elementForm .wglCheckboxWrapper      label span             {vertical-align:middle;}
+  .elementForm .wglCheckboxWrapperFloat label span             {vertical-align:middle;}
+  .elementForm .wglCheckboxWrapper      input[type='checkbox'] {position:absolute; vertical-align:middle; margin-top:0;} /* Verhindert Umbruch bzw. vertikale Verschiebung von LABEL und CHECKBOX bei mehreren Zeilen */
+}
+
+/* Formulare: Spezial-Einstellungen nur für iOS Geräte: Korrektur damit CHECKBOX bei iOS Geräten nicht zu weit oben dargestellt wird */
+@supports (-webkit-overflow-scrolling:touch) {
+  .elementForm .wglCheckboxWrapper      label                  {padding-left:1.2em; display:block;} /* Verhindert Umbruch bzw. vertikale Verschiebung von LABEL und CHECKBOX bei mehreren Zeilen */
+  .elementForm .wglCheckboxWrapperFloat label                  {padding-left:1.2em; display:block;} /* Verhindert Umbruch bzw. vertikale Verschiebung von LABEL und CHECKBOX bei mehreren Zeilen */
+  .elementForm .wglCheckboxWrapper      label span             {vertical-align:middle;}
+  .elementForm .wglCheckboxWrapperFloat label span             {vertical-align:middle;}
+  .elementForm .wglCheckboxWrapper      input[type='checkbox'] {position:absolute; vertical-align:middle; margin-top:0.8rem;} /* Verhindert Umbruch bzw. vertikale Verschiebung von LABEL und CHECKBOX bei mehreren Zeilen */
+}
+
+
+
+.elementForm button                        {margin:0 0 1% 1%; height:2.6re,; padding:0 1rem; user-select:none;}
+.elementForm button:last-child             {margin-left:4px;}
+
+.elementForm .linkButton                   {margin:0 0 1% 1%;}
+.elementForm .linkButton:last-child        {margin-left:4px;}
+
+.elementForm .linkButtonWhite              {margin:0 0 1% 1%;}
+.elementForm .linkButtonWhite:last-child   {margin-left:4px;}
+
+.elementForm .linkButtonNeutral            {margin:0 0 1% 1%;}
+.elementForm .linkButtonNeutral:last-child {margin-left:4px;}
+
+
+
+.elementForm dt, div.formElement                                    {position:relative; clear:left;}
+
+.elementForm dt, 
+.elementForm div.formElement > div:first-child                      {display:block; clear:left; margin:0 0 0 0; line-height:120%;}
+
+.elementForm dt.formElementHideLabel, 
+.elementForm div.formElement.formElementHideLabel > div:first-child {display:none}
+
+.elementForm dd, 
+.elementForm div.formElement > div:last-child                       {display:block; width:100%; margin-bottom:0.6rem;}
+
+
+.elementForm dd.formElementButton, 
+.elementForm div.formElement.formElementButton {text-align:right;}
+
+
+.elementForm dd.formElementSpacer, 
+.elementForm div.formElement.formElementSpacer {margin-bottom:3rem;} 
+
+
+.elementForm dd.formElementCaptcha, 
+.elementForm div.formElementCaptcha {}
+
+
+.elementForm .wglContainsErrorMessageInline     {position:relative;}
+.elementForm .wglErrorMessageInline             {position:absolute; top:0; right:0;}
+.elementForm .wglErrorMessageInline > div       {font-size:1.04rem; white-space:nowrap; background-color:#FECCCE; color:#FB0008; display:inline-block; padding:1px 8px; border:solid 1px #FB0008; border-radius:4px;}
+.elementForm .wglContainsValidationStatusInline {position:relative;}
+.elementForm .wglValidationStatusOK             {display:inline-block;}
+.elementForm .wglValidationStatusOK.loaded      {}
+.elementForm .wglValidationStatusOK div         {                                 opacity:0; transform:scale(0.5); margin:0 -18px 0 4px; width:18px; height:16px; background-image:url("../../images/gui/icons.svg"); background-size:800px; background-repeat:no-repeat; background-position:-390px -6px;}
+.elementForm .wglValidationStatusOK.loaded div  {transition:all 0.3s ease-in-out; opacity:1; transform:scale(1);   margin:0 -18px 0 4px; width:18px; height:16px; background-image:url("../../images/gui/icons.svg"); background-size:800px; background-repeat:no-repeat; background-position:-390px -6px;}
+.elementForm .wglConditionalFormdata            {transition:all 0.3s ease-in; overflow:hidden; height:auto; opacity:1;}
+.elementForm .wglShowConditionalFormdata        {}
+.elementForm .wglHideConditionalFormdata        {pointer-events:none; height:0; margin-bottom:0 !important; opacity:0;}
+
+
+/* --- Reduziert die Spaltenabstaende beim Einsatz mehrspaltiger Container --- */
+.elementForm .elementContainerStandardColumns {}  
+
+
+/*@wCssFragment{class:elementForm;variant:0;caption:Standard;caption-en:Standard}*/
+.elementForm_var0 {}
+
+
+/*@wCssFragment{class:elementForm;variant:1;caption:Volle Breite;caption-en:Volle Breite}*/
+.elementForm_var1 {}
+
+/* *** items > elementForm.scss END ******************************************************************************************************************************************* */
+
+
+
+
+
+
+/* --- Textformatierung --- */
+
+
+
+/* --- Links --- */
+
+
+
+/* --- Bilder --- */
+
+
+
+/* --- Tabellen --- */
+
+
+
+/* --- Globale Elemente --- */
+
+
+
+/* --- Allgemeine Elemente --- */
+
+
+
+/* --- Spezielle Elemente --- */
+
+
+
+/* --- Mehrspaltiger Inhaltscontainer --- */
+
+
+
+/* --- Bildelement --- */
+
+
+
+/* --- Form --- */
+
+
+
+
+
+

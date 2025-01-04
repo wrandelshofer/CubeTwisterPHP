@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" class="pagestatus-init" style="overflow:auto;">
+
+
+<head>
+  <title>Move Count Test</title>
+  
+  <meta charset="UTF-8" />
+  
+  <!-- CSS BEGIN -->
+  <link rel="stylesheet" type="text/css" href="https://www.randelshofer.ch/cube/twister/styles/css/tw-design.css"/>
+  <!-- CSS END -->
+  
+  <!-- JavaScript BEGIN -->
+  <script src="https://cdn.cubing.net/js/cubing/twisty" type="module" defer></script>
+  <script type="module">
+    import { ExperimentalCommonMetric } from "https://cdn.cubing.net/js/cubing/notation";
+    import { experimentalCountMetricMoves } from "https://cdn.cubing.net/js/cubing/notation";
+  </script>
+  <!-- JavaScript END -->
+  
+</head>
+
+<body onload="getMoveCount();">
+
+<!--CONTENT:START-->
+<div id="blockCGIForm">
+  
+  <!-- Headline: h1 -->
+  <div class="elementHeadline elementHeadlineAlign_var0 elementHeadline_var0 elementHeadlineLevel_varauto" id="anchor_twister">
+    <h1>Test</h1>
+  </div>
+  
+  
+  <div class="elementStandard elementContent elementForm elementForm_var0">    
+    
+    <!-- Formular BEGIN -->
+    <form id="FormA" name="" method="post" action="index.php" target="">
+      
+      <!-- Twisty Player BEGIN -->
+      <div style="height:272px; border:1px solid #999999; ">
+        <twisty-player 
+         id="twister" 
+         alg="U F U2 F L2 B U2 F R' L' F2 D R2 U2 L2 F' B L F2 D" 
+         experimental-setup-alg="" 
+         puzzle="3x3x3" 
+         vizualization="3D" 
+         experimental-stickering="full" 
+         hint-facelets="none" 
+         back-view="side-by-side" 
+         tempo-scale="2" 
+         camera-distance="6" 
+         background="none" 
+         experimental-drag-input="auto" 
+         experimental-move-press-input="basic" 
+         control-panel="bottom-row" 
+         experimental-setup-anchor="start" 
+         viewer-link="twizzle" 
+         style="width:100%; height:270px; background:#FAFAFA; border:none; margin:0 0 0 0; padding:0 0 0 0;" 
+        ></twisty-player>
+      </div>
+      <!-- Twisty Player END -->
+      
+      
+      <!-- JavaScript BEGIN -->
+      <script>
+         function getMoveCount() {
+           const spanItem = document.getElementById('moveCount');
+           
+           const puzzle = "3x3x3";
+           const metric = "OuterBlockTurnMetric";
+           const alg    = "U F U2 F L2 B U2 F R' L' F2 D R2 U2 L2 F' B L F2 D";
+           
+           //const moves  = experimentalCountMetricMoves(puzzle, metric, alg);
+           const moves  = 20;
+           
+           spanItem.textContent = moves.toString();
+         }
+      </script>
+      <!-- JavaScript END -->
+      
+      
+      <!-- Textarea: Algorithm IN -->
+      <div class="formElement formElementInput">
+        <!-- Label: Algorithm IN -->
+        <div>
+          <label 
+            class="XL wglIsNeutral"
+            for="alg" 
+            >Algorithm</label
+          ><label 
+            class="XS wglIsNeutral"
+            for="moves" 
+            ><span style="float:right;" id="moveCount">0</span></label
+          >
+        </div>
+        
+        <!-- Textarea: Algorithm IN -->
+        <div>
+          <textarea 
+            class="XXL wglIsNeutral" 
+            name="alg" 
+            id="alg" 
+            maxlength="" 
+            rows="4" 
+            cols="" 
+            wrap="virtual" 
+            placeholder="Algorithm" 
+            >U F U2 F L2 B U2 F R' L' F2 D R2 U2 L2 F' B L F2 D</textarea
+          >
+        </div>
+      </div>
+      <!-- Algorithm IN (Textarea) END -->
+      
+      
+    </form>
+    <!-- Formular END -->
+    
+  </div>
+  
+</div>
+<!--CONTENT:STOP-->
+
+</body>
+</html>

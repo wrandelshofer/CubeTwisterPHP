@@ -1,2 +1,2 @@
 # CubeTwisterPHP
-Partial Port of CubeTwister to PHP
+Partial Port of CubeTwister to PHP.

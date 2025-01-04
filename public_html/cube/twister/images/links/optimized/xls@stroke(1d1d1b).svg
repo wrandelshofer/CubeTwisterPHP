@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" shape-rendering="auto">
+  <path
+     style="fill:none;fill-opacity:1;stroke:#1d1d1b;stroke-width:1;"
+     d="m 4.5,3.5 5,0 3,3 0,7 -8,0 z" />
+  <path
+     style="fill:none;fill-opacity:1;stroke:#1d1d1b;stroke-width:1;"
+     d="m 9.5,3.5 0,3 3,0" />
+  <rect
+     style="fill:#1e6d41;fill-opacity:1;stroke:none;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="rect4144"
+     width="8"
+     height="4"
+     x="2"
+     y="8" />
+   <g>
+     <path
+        d="M 4.3488829,9.9792365 4.9991983,11 4.4957688,11 4.0576219,10.316812 3.6232413,11 3.1173008,11 3.7676163,9.9792365 3.1424096,9 3.6470945,9 4.0576219,9.6443403 4.4668938,9 4.9740896,9 4.3488829,9.9792365 Z"
+        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.57113147px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1" />
+     <path
+        d="m 5.2879484,9 0.4833426,0 0,1.61018 0.8486743,0 0,0.38982 -1.3320169,0 0,-2 z"
+        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.57113147px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1" />
+     <path
+        d="m 8.2344551,9.0955458 0,0.4080053 Q 8.0800366,9.4325376 7.9331506,9.3963852 7.7862647,9.3602329 7.6556994,9.3602329 q -0.17325,0 -0.2561088,0.049064 -0.082859,0.049064 -0.082859,0.1523563 0,0.077469 0.055239,0.1213686 0.056495,0.042608 0.2033805,0.073596 l 0.2058914,0.042608 q 0.3126034,0.064558 0.4444241,0.1962556 0.1318207,0.1316976 0.1318207,0.3744356 0,0.318915 -0.184549,0.475145 Q 7.9896447,11 7.6117587,11 7.4334869,11 7.2539596,10.96514 7.0744324,10.93028 6.8949052,10.861849 l 0,-0.419625 q 0.1795272,0.09812 0.3465001,0.148482 0.1682283,0.04907 0.3239023,0.04907 0.1581848,0 0.242299,-0.05423 0.084114,-0.05423 0.084114,-0.154939 0,-0.09038 -0.05775,-0.139445 -0.056494,-0.04907 -0.2272337,-0.0878 L 7.4196776,10.16075 Q 7.1384601,10.098774 7.0078948,9.9632026 6.878585,9.8276312 6.878585,9.5978055 q 0,-0.2879277 0.1807827,-0.4428664 0.1807827,-0.1549388 0.5197502,-0.1549388 0.1544185,0 0.3176251,0.024532 0.1632066,0.023241 0.3377121,0.071014 z"
+        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.57113147px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ffffff;fill-opacity:1" />
+   </g>
+</svg>
