@@ -1,6 +1,6 @@
 <?php 
   /* --- Globale Funktionen laden --- */
-  require_once($_SERVER['DOCUMENT_ROOT'].'/cube/twister/scripts/tw-functions_v000-006-004.php'); // v0.6.4
+  require_once(__DIR__ .'/scripts/tw-functions_v000-007-001.php'); // v0.7.1
   
   
   
@@ -9,8 +9,8 @@
   * Twister
   * 
   * Author:      Walter Randelshofer, Hausmatt 10, CH-6405 Immensee
-  * Version:     0.6.4
-  * Last Update: 17.05.2024 wr
+  * Version:     0.7.1
+  * Last Update: 04.01.2025 Werner Randelshofer
   * 
   * Requires:    Twisty Player (cubing.net)
   * 
@@ -66,8 +66,8 @@
   
   /* --- Variables --- */
   $cgiFile           = "index.php";  // CGI File.
-  $cgiVersion        = "0.6.4 beta"; // CGI Version.
-  $cgiYear           = "2024";       // CGI Year.
+  $cgiVersion        = "0.7.1 beta"; // CGI Version.
+  $cgiYear           = "2025";       // CGI Year.
   
   $hostURL           = "www.randelshofer.ch"; // Domain of this CGI.
   
