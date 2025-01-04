@@ -1,6 +1,6 @@
 <?php 
   /* --- Globale Funktionen laden --- */
-  require_once($_SERVER['DOCUMENT_ROOT'].'/cube/twister/scripts/tw-functions_v000-007-001.php'); // v0.6.4
+  require_once($_SERVER['DOCUMENT_ROOT'].'/cube/twister/scripts/tw-functions_v000-006-004.php'); // v0.6.4
   
   
   
