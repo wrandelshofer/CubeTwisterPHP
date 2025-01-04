@@ -9,8 +9,8 @@
   * Twister
   * 
   * Author:      Walter Randelshofer, Hausmatt 10, CH-6405 Immensee
-  * Version:     0.7.1
-  * Last Update: 04.01.2025 Werner Randelshofer
+  * Version:     0.6.4
+  * Last Update: 17.05.2024 wr
   * 
   * Requires:    Twisty Player (cubing.net)
   * 
@@ -628,7 +628,7 @@
   $mta_description     = "Twister supports a wide range of Twisty Puzzles such as Cubes (2 to 7 layers), Pyraminx (3 to 5 layers), as well as the dodecahedron Megaminx and Gigaminx. ";
   $mta_description    .= "This powerful editor and viewer also translates from SSE to TWIZZLE (WCA, SiGN) notation and vice versa.";
   $mta_keywords        = "Twister v". $cgiVersion .", Walter Randelshofer, ";
-  $mta_keywords       .= "SSE (Superset ENG) notation, TWIZZLE notation, WCA notation, SiGN notation, ";
+  $mta_keyword        .= "SSE (Superset ENG) notation, TWIZZLE notation, WCA notation, SiGN notation, ";
   $mta_keywords       .= "Pocket Cube, Rubik's Cube, Rubik's Revenge, Revenge Cube, Professor Cube, V-Cube 6, V-Cube 7, ";
   $mta_keywords       .= "Pyraminx, Master Pyraminx, Professor Pyraminx, ";
   $mta_keywords       .= "Megaminx, Gigaminx";
